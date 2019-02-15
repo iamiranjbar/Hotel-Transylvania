@@ -228,7 +228,7 @@ Reserve findReserve(vector<Reserve> &reserves, string guestName, int roomID, boo
 
 Guest findGuestByName(vector<Guest> guests, string name){
 	for (int i = 0; i < guests.size(); i++){
-		if (name = guests[i].name)
+		if (name == guests[i].name)
 			return guests[i];
 	}
 	cout << "Guest not found!" << endl;
