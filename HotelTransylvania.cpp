@@ -21,7 +21,7 @@ struct Room{
 	int capacity;
 	int rate;
 	bool reserved;
-}
+};
 
 struct Reserve{
 	Guest guest;
