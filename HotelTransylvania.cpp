@@ -267,5 +267,6 @@ vector<string> splitBySpace(string statement){
             result.push_back(token);
             token = "";
         }
+				result.push_back(token);
     return result;
 }
