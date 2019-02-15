@@ -8,6 +8,8 @@
 
 #define serviceRate 10000
 
+using namespace std;
+
 struct Guest{
   string name;
   string number; 
