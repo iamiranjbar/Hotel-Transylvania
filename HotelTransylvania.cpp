@@ -109,7 +109,7 @@ void readRoomsData(ifstream &fileData , vector <Room> &rooms){
 
 void readRoomDetails(string line , Room &room){
  	vector<string> details = splitBySpace(line);
- 	room.id = details[0];
+ 	room.id = stoi(details[0]);
  	room.type = details[1];
  	room.capacity = stoi(details[2]);
  	room.rate = stoi(details[3]);
