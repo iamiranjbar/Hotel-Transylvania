@@ -1,0 +1,6 @@
+12 twin 2 100000
+23 suit 5 400000
+34 lonely 1 70000
+45 jakoozi 4 350000
+56 darya 3 290000
+62 jangal 3 270000
