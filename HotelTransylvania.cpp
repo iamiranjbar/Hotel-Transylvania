@@ -240,10 +240,11 @@ Guest findGuestByName(vector<Guest> guests, string name){
 
 Room findRoomByID(vector<Room> &rooms, int id, bool reserving){
 	for (int i = 0; i < rooms.size(); i++){
-		if (rooms[i].id == id){	
+		if (rooms[i].id == id){
+			Room temp = rooms[i];
 			if (reserving == true)
 				rooms[i].reserved = true;
-			return rooms[i];
+			return temp;
 		}
 	}
 }
