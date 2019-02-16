@@ -164,7 +164,7 @@ vector<Room> getStatusByID(vector<Room> rooms, string id){
 
 vector<Room> getStatusByType(vector<Room> rooms, string type){
 	vector<Room> roomsToShow;
-	for (int i = 0; i < rooms.size(); i++){
+	for (uint i = 0; i < rooms.size(); i++){
 		if (rooms[i].type == type)
 			roomsToShow.push_back(rooms[i]);
 	}
@@ -175,7 +175,7 @@ void showRooms(vector<Room> rooms){
 	if (rooms.size() != 0){
 		cout << "Room id\tRoom type\tRoom capacity\tRoom rate\tRoom status" << endl;
 		cout << "_________________________________________________________" << endl;
-		for (int i = 0; i < rooms.size(); i++){
+		for (uint i = 0; i < rooms.size(); i++){
 			cout << rooms[i].id << "\t" << rooms[i].type << "\t" << rooms[i].capacity << "\t" << 
 				rooms[i].rate << "\t";
 			if (rooms[i].reserved == false)
@@ -203,8 +203,8 @@ void reserve(vector<Reserve> &reserves,vector<Guest> guests,vector<Room> &rooms,
 }
 
 void service(vector<Reserve> &reserves, string roomID, string guestName){
-	for (int i = 0; i < reserves.size(); i++){
-		if (guestName == reserves[i].guest.name && stoi(roomID) == reserves[i].room.id)//delete stoi
+	for (uint i = 0; i < reserves.size(); i++){
+		if (guestName == reserves[i].guest.name && stoi(roomID) == reserves[i].room.id)
 			reserves[i].serviceNum += 1;
 	}
 }
@@ -221,7 +221,7 @@ void checkout(vector<Reserve> &reserves, string roomID, string guestName){
 }
 
 Reserve findReserve(vector<Reserve> &reserves, string guestName, int roomID, bool del){
-	for (int i = 0; i < reserves.size(); i++){
+	for (uint i = 0; i < reserves.size(); i++){
 		if (guestName == reserves[i].guest.name && roomID == reserves[i].room.id){
 			Reserve temp = reserves[i];
 			if (del == true)
@@ -232,7 +232,7 @@ Reserve findReserve(vector<Reserve> &reserves, string guestName, int roomID, boo
 }
 
 Guest findGuestByName(vector<Guest> guests, string name){
-	for (int i = 0; i < guests.size(); i++){
+	for (uint i = 0; i < guests.size(); i++){
 		if (name == guests[i].name)
 			return guests[i];
 	}
@@ -240,7 +240,7 @@ Guest findGuestByName(vector<Guest> guests, string name){
 }
 
 Room findRoomByID(vector<Room> &rooms, int id, bool reserving){
-	for (int i = 0; i < rooms.size(); i++){
+	for (uint i = 0; i < rooms.size(); i++){
 		if (rooms[i].id == id){
 			Room temp = rooms[i];
 			if (reserving == true)
@@ -254,7 +254,7 @@ vector<string> splitBySpace(string statement){
     vector<string> result;
     string temp = "";
     string token;
-    for(int i=0; i<statement.length(); i++)
+    for(uint i=0; i<statement.length(); i++)
         if(statement[i] != ' '){
         	token += statement[i];
         }
