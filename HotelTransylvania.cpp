@@ -55,17 +55,18 @@ int main(){
 	vector<Reserve> reserves;
 	vector <Guest> guests;
 	ifstream guestsFile;
-	cout << "Hello" << endl;
 	openFile(GUESTFILE , guestsFile);
-	cout << "After opening guest file..." << endl;
-	readGuestsData(guestsFile , guests);
-  cout << "After reading guest data..." << endl;	
+	if(!guestsFile){
+		return 0;
+	}
+	readGuestsData(guestsFile , guests);	
 	vector <Room> rooms;
 	ifstream roomsFile;
 	openFile(ROOMFILE , roomsFile);
-	cout << "After opening room file..." << endl;
+	if(!roomsFile){
+		return 0;
+	}
 	readRoomsData(roomsFile , rooms);
-	cout << "After opening room file..." << endl;
 	roomsFile.close();
 
 	while (cin != NULL){
@@ -87,25 +88,17 @@ void openFile(string fileName , ifstream &fileData){
 void readGuestsData(ifstream &fileData , vector <Guest> guests){
   string line;
   Guest guest;
-	int i = 0;
   while (fileData.tellg()!=EOF){
-		cout << "before get line #" << i << endl;
     getline(fileData, line);
-		cout << "before read guest details #" << i << endl;
     readGuestDetails(line , guest);
     guests.push_back(guest);
-		i++;
   }
 }
 
 void readGuestDetails(string line , Guest &guest){
-	cout << "before splitting line" << endl;
  	vector<string> details = splitBySpace(line);
-	cout << "after splitting line" << endl;
  	guest.name = details[0];
-	cout << "name of guest is okay!" << endl;
  	guest.number = details[1];
-	cout << "Successful guest data reading..." << endl;
 }
 
 void readRoomsData(ifstream &fileData , vector <Room> &rooms){
