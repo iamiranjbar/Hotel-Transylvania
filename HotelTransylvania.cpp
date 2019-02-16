@@ -31,7 +31,7 @@ struct Reserve{
 };
 
 void openFile(string fileName , ifstream &fileData);
-void readGuestsData(ifstream &fileData , vector <Guest> guests);
+void readGuestsData(ifstream &fileData , vector <Guest> &guests);
 void readGuestDetails(string line , Guest &guest);
 void readRoomsData(ifstream &fileData , vector <Room> &rooms);
 void readRoomDetails(string line , Room &room);
@@ -85,7 +85,7 @@ void openFile(string fileName , ifstream &fileData){
   }
 }
 
-void readGuestsData(ifstream &fileData , vector <Guest> guests){
+void readGuestsData(ifstream &fileData , vector <Guest> &guests){
   string line;
   Guest guest;
   while (fileData.tellg()!=EOF){
