@@ -191,7 +191,11 @@ void reserve(vector<Reserve> &reserves,vector<Guest> guests,vector<Room> &rooms,
 	string id, string guestName, string days){
 	Reserve newReserve;
 	Guest guest = findGuestByName(guests, guestName);
+	if (guest.number == "-1")
+		return;
 	Room room = findRoomByID(rooms, stoi(id) , true);
+	if (room.capacity == -1)
+		return;
 	if (room.reserved == false){
 		newReserve.guest = guest;
 		newReserve.room = room;
@@ -211,6 +215,8 @@ void service(vector<Reserve> &reserves, string roomID, string guestName){
 
 void checkout(vector<Reserve> &reserves, string roomID, string guestName){
 	Reserve reserve = findReserve(reserves, guestName, stoi(roomID) , true);
+	if (reserve.days == -1)
+		return;
 	cout << guestName << " " << roomID << " " << reserve.days << endl;
 	int roomPrice = reserve.days * reserve.room.rate;
 	cout << "Room price:" << reserve.days << " * " << reserve.room.rate << " = " << roomPrice << endl; 
@@ -229,6 +235,10 @@ Reserve findReserve(vector<Reserve> &reserves, string guestName, int roomID, boo
 			return temp;
 		}
 	}
+	cout << "reserve not found!" << endl;
+	Reserve dummy;
+	dummy.days = -1;
+	return dummy;
 }
 
 Guest findGuestByName(vector<Guest> guests, string name){
@@ -237,6 +247,9 @@ Guest findGuestByName(vector<Guest> guests, string name){
 			return guests[i];
 	}
 	cout << "Guest not found!" << endl;
+	Guest dummy;
+	dummy.number = "-1";
+	return dummy;
 }
 
 Room findRoomByID(vector<Room> &rooms, int id, bool reserving){
@@ -248,6 +261,9 @@ Room findRoomByID(vector<Room> &rooms, int id, bool reserving){
 			return temp;
 		}
 	}
+	Room dummy;
+	dummy.capacity = -1;
+	return dummy;
 }
 
 vector<string> splitBySpace(string statement){
