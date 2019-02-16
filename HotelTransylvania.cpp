@@ -223,9 +223,10 @@ void checkout(vector<Reserve> &reserves, string roomID, string guestName){
 Reserve findReserve(vector<Reserve> &reserves, string guestName, int roomID, bool del){
 	for (int i = 0; i < reserves.size(); i++){
 		if (guestName == reserves[i].guest.name && roomID == reserves[i].room.id){
+			Reserve temp = reserves[i];
 			if (del == true)
 				reserves.erase(reserves.begin() + i);
-			return reserves[i];
+			return temp;
 		}
 	}
 }
